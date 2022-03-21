@@ -1,10 +1,12 @@
-import {IEpisode} from "../components/IEpisode"
+import { IEpisode } from "../components/IEpisode";
 
-function isSearchTermPresent(singleEpisode:IEpisode, searchTerm: string):boolean{
-    const fullDetail = singleEpisode.name + singleEpisode.summary
-    return fullDetail.includes(searchTerm)
+function isSearchTermPresent(
+  singleEpisode: IEpisode,
+  searchTerm: string
+): boolean {
+  const fullDetail =
+    singleEpisode.name.toLowerCase() + singleEpisode.summary.toLowerCase();
+  return fullDetail.includes(searchTerm.toLowerCase());
 }
 
-export default isSearchTermPresent
-
-
+export default isSearchTermPresent;

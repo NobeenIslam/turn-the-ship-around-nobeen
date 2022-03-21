@@ -3,25 +3,24 @@ import Episode from "./components/episode-component";
 import episodeData from "./episodes.json";
 //import IEpisode from "./components/IEpisode"
 
-
-
 // test episodes pulling correctly-
 // console.log(`Imported ${episodes.length} episode(s)`);
 // console.log(`First episode's name is ${episodes[0].name}`);
 
 function App(): JSX.Element {
   const episodeBlocks = episodeData.map(Episode);
-  const [search,setSearch] = useState<string>("")
+  const [search, setSearch] = useState<string>("");
 
   return (
     <>
       <header>
-        <input 
-          placeholder = "Type to Search"
-          value = {search}
-          onChange = {(event)=> {setSearch(event.target.value)}}
-        >
-        </input>
+        <input
+          placeholder="Type to Search"
+          value={search}
+          onChange={(event) => {
+            setSearch(event.target.value);
+          }}
+        ></input>
       </header>
       <br></br>
       <main>{episodeBlocks}</main>
