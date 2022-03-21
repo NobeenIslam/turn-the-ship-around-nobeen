@@ -9,10 +9,7 @@ const episodeBlocks = episodeData.map(Episode);
 // console.log(`First episode's name is ${episodes[0].name}`);
 
 function App(): JSX.Element {
-  return <>
-          {episodeBlocks}
-  </>
-
+  return <>{episodeBlocks}</>;
 }
 
 export default App;

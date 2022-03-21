@@ -1,4 +1,4 @@
-import  episodes from "../episodes.json";
+import episodes from "../episodes.json";
 import { seasonEpisodeString } from "./season-episode-string";
 
 test("greet returns a string, greeting the passed name", () => {
