@@ -1,16 +1,32 @@
+import { useState } from "react";
 import Episode from "./components/episode-component";
 import episodeData from "./episodes.json";
-//import IEpisode from "./components/IEpisode"
-
-const episodeBlocks = episodeData.map(Episode);
-
-// test episodes pulling correctly-
-// console.log(`Imported ${episodes.length} episode(s)`);
-// console.log(`First episode's name is ${episodes[0].name}`);
+import { IEpisode } from "./components/IEpisode";
+import isSearchTermPresent from "./utils/isSearchTermPresent";
 
 function App(): JSX.Element {
+  const [search, setSearch] = useState<string>("");
+  const episodeBlocks = episodeData
+    .filter((singleEpisode: IEpisode) =>
+      isSearchTermPresent(singleEpisode, search)
+    )
+    .map(Episode);
+
   return (
     <>
+      <header>
+        <input
+          placeholder="Type to Search"
+          value={search}
+          onChange={(event) => {
+            setSearch(event.target.value);
+          }}
+        ></input>
+        <p>
+          Displaying {episodeBlocks.length} / {episodeData.length} episodes
+        </p>
+      </header>
+      <br></br>
       <main>{episodeBlocks}</main>
       <br></br>
       <br></br>
