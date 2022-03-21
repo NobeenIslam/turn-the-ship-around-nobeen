@@ -1,5 +1,9 @@
-# Simplified CRA starter
+README for turn the ship around.
+Project page linked in Notion: 
+https://www.notion.so/weareacademy/Team-C4R4-Mat-and-Nobeen-82b1a6e9af9d477ca8fdd30c11e3a72e
+And in GitHub:
+https://github.com/matbatten/turn-the-ship-around
 
-<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a>
-
-> This is part of Academy's technical curriculum for **The Mark**. All parts of that curriculum, including this project, are licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>
+Fork repo & clone into local.
+Install yarn dependencies.
+Run yarn start to host locally at port 3000.
