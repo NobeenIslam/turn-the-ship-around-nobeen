@@ -12,14 +12,6 @@ function App(): JSX.Element {
     )
     .map(Episode);
 
-  // function isSearchTermPresent(
-  //   singleEpisode: IEpisode
-  // ): boolean {
-  //   const fullDetail =
-  //     singleEpisode.name.toLowerCase() + singleEpisode.summary.toLowerCase();
-  //   return fullDetail.includes(search.toLowerCase());
-  // }
-
   return (
     <>
       <header>
@@ -30,6 +22,9 @@ function App(): JSX.Element {
             setSearch(event.target.value);
           }}
         ></input>
+        <p>
+          Displaying {episodeBlocks.length} / {episodeData.length} episodes
+        </p>
       </header>
       <br></br>
       <main>{episodeBlocks}</main>
