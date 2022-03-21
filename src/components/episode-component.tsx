@@ -1,14 +1,13 @@
 import { IEpisode } from "./IEpisode";
+import { seasonEpisodeString } from "../utils/season-episode-string";
 
   function Episode(props :IEpisode) :JSX.Element {
+      const episodeCode = seasonEpisodeString(props)
       return (<>
-        {/* You must extract a pure function to generate this episode code from an episode object, and write unit tests for it with jest. */}
-
-        "Episode Name
-        Season Number - Episode Number (both zero-padded to 2 digits eg S01E01)
-        Episode Medium Image
-        Episode summary Text"
-
+        <h1>{props.name}</h1>    
+        <h2>{episodeCode}</h2>
+        <img src ={props.image.medium} alt = "scaled still from episode"> </img> 
+        {props.summary}
       </>)
   }
 
