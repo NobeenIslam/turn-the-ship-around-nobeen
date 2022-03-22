@@ -1,4 +1,3 @@
-
-export function tagRemover(inputString: string) : string {
-    return inputString.replace(/(<([^>]+)>)/gi, "")
+export function tagRemover(inputString: string): string {
+  return inputString.replace(/(<([^>]+)>)/gi, "");
 }
