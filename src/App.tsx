@@ -8,14 +8,22 @@ import isIdPresent from "./utils/isIdPresent";
 
 function App(): JSX.Element {
   const [search, setSearch] = useState<string>("");
-  const [idSelect, setIdSelect] = useState<string>("");
+  const [idSelect, setIdSelect] = useState<string>("Select an episode...");
+  console.log(idSelect)
 
-  const episodeBlocks = episodeData
+  let filteredEpisodes:IEpisode[] = []
+
+  if (idSelect === "Select an episode..." ){
+    filteredEpisodes = episodeData
     .filter((singleEpisode: IEpisode) =>
       isSearchTermPresent(singleEpisode, search)
     )
-    .filter((singleEpisode: IEpisode)=> isIdPresent(singleEpisode,idSelect))
-    .map(Episode);
+  }else{
+    filteredEpisodes = episodeData
+    .filter((singleEpisode: IEpisode) => isIdPresent(singleEpisode, idSelect));
+  }
+  
+  const episodeBlocks = filteredEpisodes.map(Episode);
 
   const epSelectorOptionsArray = episodeData.map((singleEpisode: IEpisode) => {
     const epSelectorName = createEpSelectorName(singleEpisode);
@@ -34,8 +42,10 @@ function App(): JSX.Element {
           value={idSelect}
           onChange={(event) => {
             setIdSelect(event.target.value);
+            setSearch("")
           }}
         >
+          <option defaultValue={""}>Select an episode...</option>
           {epSelectorOptionsArray}
         </select>
         <input
@@ -43,6 +53,7 @@ function App(): JSX.Element {
           value={search}
           onChange={(event) => {
             setSearch(event.target.value);
+            setIdSelect("Select an episode...")
           }}
         ></input>
         <p>
