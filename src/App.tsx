@@ -7,26 +7,49 @@ import { createEpSelectorName } from "./utils/createEpSelectorName";
 
 function App(): JSX.Element {
   const [search, setSearch] = useState<string>("");
+  const [idSelect,setIdSelect] = useState<string>()
+
   const episodeBlocks = episodeData
     .filter((singleEpisode: IEpisode) =>
       isSearchTermPresent(singleEpisode, search)
     )
     .map(Episode);
 
+  // function createDropDownListElement(singleEpisode:IEpisode):JSX.Element {
+  //   const epSelectorName = createEpSelectorName(singleEpisode);
+  //   return (
+  //     <option 
+  //       key={singleEpisode.airstamp} 
+  //       value={singleEpisode.id}
+  //     >
+  //       {epSelectorName}
+  //     </option>
+  //   );
+  // }
+
+  // const epSelectorOptionsArray = episodeData.map(createDropDownListElement)
+
   const epSelectorOptionsArray = episodeData.map((singleEpisode: IEpisode) => {
     const epSelectorName = createEpSelectorName(singleEpisode);
     return (
-      <option key={epSelectorName} value={epSelectorName}>
+      <option 
+        key={singleEpisode.airstamp} 
+        value={singleEpisode.id}
+      >
         {epSelectorName}
       </option>
     );
   });
 
+
   return (
     <>
       <header>
-        <label htmlFor="Episode Selector">Choose an Episode:</label>
-        <select name="Episode Selector" id="Episode Selector">
+        <select 
+          name="Episode Selector" 
+          value={idSelect}
+          onChange = {(event)=> {setIdSelect(event.target.value); console.log(event.target.value)}}
+        >
           {epSelectorOptionsArray}
         </select>
         <input
