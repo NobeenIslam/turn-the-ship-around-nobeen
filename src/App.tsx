@@ -4,15 +4,17 @@ import episodeData from "./episodes.json";
 import { IEpisode } from "./components/IEpisode";
 import isSearchTermPresent from "./utils/isSearchTermPresent";
 import { createEpSelectorName } from "./utils/createEpSelectorName";
+import isIdPresent from "./utils/isIdPresent";
 
 function App(): JSX.Element {
   const [search, setSearch] = useState<string>("");
-  const [idSelect, setIdSelect] = useState<string>();
+  const [idSelect, setIdSelect] = useState<string>("");
 
   const episodeBlocks = episodeData
     .filter((singleEpisode: IEpisode) =>
       isSearchTermPresent(singleEpisode, search)
     )
+    .filter((singleEpisode: IEpisode)=> isIdPresent(singleEpisode,idSelect))
     .map(Episode);
 
   const epSelectorOptionsArray = episodeData.map((singleEpisode: IEpisode) => {
@@ -32,7 +34,6 @@ function App(): JSX.Element {
           value={idSelect}
           onChange={(event) => {
             setIdSelect(event.target.value);
-            console.log(event.target.value);
           }}
         >
           {epSelectorOptionsArray}
