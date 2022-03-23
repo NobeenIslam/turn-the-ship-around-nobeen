@@ -2,7 +2,7 @@ import { IEpisode } from "./IEpisode";
 import { seasonEpisodeString } from "../utils/season-episode-string";
 import { tagRemover } from "../utils/tagRemover";
 
-function Episode(props: IEpisode): JSX.Element {
+function EpisodeComponent(props: IEpisode): JSX.Element {
   const episodeCode = seasonEpisodeString(props);
   const summaryWithoutTags = tagRemover(props.summary);
   return (
@@ -18,4 +18,4 @@ function Episode(props: IEpisode): JSX.Element {
   );
 }
 
-export default Episode;
+export default EpisodeComponent;

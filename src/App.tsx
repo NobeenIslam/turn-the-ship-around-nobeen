@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Episode from "./components/episode-component";
+import EpisodeComponent from "./components/episode-component";
 import episodeData from "./episodes.json";
 import { IEpisode } from "./components/IEpisode";
 import isSearchTermPresent from "./utils/isSearchTermPresent";
@@ -23,7 +23,7 @@ function App(): JSX.Element {
     );
   }
 
-  const episodeBlocks = filteredEpisodes.map(Episode);
+  const episodeBlocks = filteredEpisodes.map(EpisodeComponent);
 
   const epSelectorOptionsArray = episodeData.map((singleEpisode: IEpisode) => {
     const epSelectorName = createEpSelectorName(singleEpisode);
