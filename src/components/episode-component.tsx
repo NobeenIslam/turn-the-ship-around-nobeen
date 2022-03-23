@@ -10,7 +10,9 @@ function Episode(props: IEpisode): JSX.Element {
       <h1>{props.name}</h1>
       <h2>{episodeCode}</h2>
       {props.image == null && <p>IMAGE MISSiING</p>}
-      {props.image !==null && <img src={props.image.medium} alt="scaled still from episode" />}
+      {props.image !== null && (
+        <img src={props.image.medium} alt="scaled still from episode" />
+      )}
       <p>{summaryWithoutTags}</p>
     </>
   );
