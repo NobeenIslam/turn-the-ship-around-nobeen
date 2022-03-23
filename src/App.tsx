@@ -3,6 +3,8 @@ import Episode from "./components/episode-component";
 import episodeData from "./episodes.json";
 import { IEpisode } from "./components/IEpisode";
 import isSearchTermPresent from "./utils/isSearchTermPresent";
+import { createEpSelectorName } from "./utils/createEpSelectorName";
+import { JsxTokenSyntaxKind } from "typescript";
 
 function App(): JSX.Element {
   const [search, setSearch] = useState<string>("");
@@ -12,9 +14,22 @@ function App(): JSX.Element {
     )
     .map(Episode);
 
+  const epSelectorOptionsArray = episodeData.map((singleEpisode: IEpisode) => {
+    const epSelectorName = createEpSelectorName(singleEpisode);
+    return (
+      <option key={epSelectorName} value={epSelectorName}>
+        {epSelectorName}
+      </option>
+    );
+  });
+
   return (
     <>
       <header>
+        <label htmlFor="Episode Selector">Choose an Episode:</label>
+        <select name="Episode Selector" id="Episode Selector">
+          {epSelectorOptionsArray}
+        </select>
         <input
           placeholder="Type to Search"
           value={search}
