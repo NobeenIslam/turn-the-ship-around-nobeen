@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Episode from "./components/episode-component";
-import episodeData from "./episodes.json";
+import episodeData from "./episodesSimpsons.json";
 import { IEpisode } from "./components/IEpisode";
 import isSearchTermPresent from "./utils/isSearchTermPresent";
 
