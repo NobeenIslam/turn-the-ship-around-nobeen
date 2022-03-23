@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import EpisodeComponent from "./components/episode-component";
-import episodeData from "./episodes.json";
+// import episodeData from "./episodes.json";
 import { IEpisode } from "./components/IEpisode";
 import isSearchTermPresent from "./utils/isSearchTermPresent";
 import { createEpSelectorName } from "./utils/createEpSelectorName";
@@ -8,8 +8,15 @@ import isIdPresent from "./utils/isIdPresent";
 
 function App(): JSX.Element {
   const [search, setSearch] = useState<string>("");
+  const [episodeData, setEpisodeData] = useState<IEpisode[]>([]);
   const [idSelect, setIdSelect] = useState<string>("Select an episode...");
   console.log(idSelect);
+
+  useEffect(() => {
+    fetch("https://api.tvmaze.com/shows/82/episodes")
+      .then((response) => response.json())
+      .then((jsonEpisode: IEpisode[]) => setEpisodeData(jsonEpisode));
+  }, []);
 
   let filteredEpisodes: IEpisode[] = [];
 
