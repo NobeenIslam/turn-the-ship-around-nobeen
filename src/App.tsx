@@ -4,7 +4,6 @@ import episodeData from "./episodes.json";
 import { IEpisode } from "./components/IEpisode";
 import isSearchTermPresent from "./utils/isSearchTermPresent";
 import { createEpSelectorName } from "./utils/createEpSelectorName";
-import { JsxTokenSyntaxKind } from "typescript";
 
 function App(): JSX.Element {
   const [search, setSearch] = useState<string>("");
