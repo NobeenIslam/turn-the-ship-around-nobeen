@@ -35,7 +35,7 @@ function App(): JSX.Element {
   const epSelectorOptionsArray = episodeData.map((singleEpisode: IEpisode) => {
     const epSelectorName = createEpSelectorName(singleEpisode);
     return (
-      <option key={singleEpisode.airstamp} value={singleEpisode.id}>
+      <option key={singleEpisode.id} value={singleEpisode.id}>
         {epSelectorName}
       </option>
     );
