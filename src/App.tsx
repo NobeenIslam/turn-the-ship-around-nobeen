@@ -34,7 +34,8 @@ function App(): JSX.Element {
     );
   }
 
-  const episodeBlocks = filteredEpisodes.map(EpisodeComponent);
+  const episodeBlocks = filteredEpisodes.map((singleEpisode) => <EpisodeComponent {...singleEpisode} key={singleEpisode.id}/>);
+  // const episodeBlocks :IEpisode[] = [];
 
   const epSelectorOptionsArray = episodeData.map((singleEpisode: IEpisode) => {
     const epSelectorName = createEpSelectorName(singleEpisode);
@@ -58,6 +59,7 @@ function App(): JSX.Element {
   return (
     <>
       <header>
+        <h1 className = "title">Turn the Ship around.tv</h1>
         <select
           name="Show selector"
           value={showIdSelect}

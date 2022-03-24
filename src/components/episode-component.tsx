@@ -6,16 +6,16 @@ function EpisodeComponent(props: IEpisode): JSX.Element {
   const episodeCode = seasonEpisodeString(props);
   // const summaryWithoutTags = tagRemover(props.summary);
   return (
-    <>
-      <h1>{props.name}</h1>
-      <h2>{episodeCode}</h2>
+    <section className = "episodeBlock">
+      <h2 className = "epCode">{episodeCode}</h2>
+      <h1 className = "epName">{props.name}</h1>
       {props.image == null && <p>IMAGE MISSING</p>}
       {props.image !== null && (
-        <img src={props.image.medium} alt="scaled still from episode" />
+        <img className = "epImg" src={props.image.medium} alt="scaled still from episode" />
       )}
-      {props.summary == null && <p>SUMMARY MISSING</p>}
-      {props.summary !== null && <p>{tagRemover(props.summary)}</p>}
-    </>
+      {props.summary == null && <p className = "epText">SUMMARY MISSING</p>}
+      {props.summary !== null && <p className = "epText">{tagRemover(props.summary)}</p>}
+    </section>
   );
 }
 
