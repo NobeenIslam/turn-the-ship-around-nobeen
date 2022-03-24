@@ -13,7 +13,7 @@ function App(): JSX.Element {
   const [search, setSearch] = useState<string>("");
   const [episodeData, setEpisodeData] = useState<IEpisode[]>([]);
   const [idSelect, setIdSelect] = useState<string>("Select an episode...");
-  const [showIdSelect, setShowIdSelect] = useState<string>("Select a show...");
+  const [showIdSelect, setShowIdSelect] = useState<string>("496");
   console.log(showIdSelect);
 
   useEffect(() => {
@@ -34,7 +34,9 @@ function App(): JSX.Element {
     );
   }
 
-  const episodeBlocks = filteredEpisodes.map((singleEpisode) => <EpisodeComponent episode={singleEpisode} key={singleEpisode.id}/>);
+  const episodeBlocks = filteredEpisodes.map((singleEpisode) => (
+    <EpisodeComponent episode={singleEpisode} key={singleEpisode.id} />
+  ));
   // const episodeBlocks :IEpisode[] = [];
 
   const epSelectorOptionsArray = episodeData.map((singleEpisode: IEpisode) => {
@@ -59,7 +61,7 @@ function App(): JSX.Element {
   return (
     <>
       <header>
-        <h1 className = "title">Turn the Ship around.tv</h1>
+        <h1 className="title">Turn the Ship around.tv</h1>
         <select
           name="Show selector"
           value={showIdSelect}
@@ -69,7 +71,7 @@ function App(): JSX.Element {
             setSearch("");
           }}
         >
-          <option defaultValue={""}>Select a show...</option>
+          <option value={496}>Select a show...</option>
           {showSelectorOptionsArray}
         </select>
         <select
