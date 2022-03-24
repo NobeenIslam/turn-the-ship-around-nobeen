@@ -34,7 +34,7 @@ function App(): JSX.Element {
     );
   }
 
-  const episodeBlocks = filteredEpisodes.map((singleEpisode) => <EpisodeComponent {...singleEpisode} key={singleEpisode.id}/>);
+  const episodeBlocks = filteredEpisodes.map((singleEpisode) => <EpisodeComponent episode={singleEpisode} key={singleEpisode.id}/>);
   // const episodeBlocks :IEpisode[] = [];
 
   const epSelectorOptionsArray = episodeData.map((singleEpisode: IEpisode) => {
