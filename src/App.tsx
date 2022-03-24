@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import EpisodeComponent from "./components/episode-component";
 // import episodeData from "./episodes.json";
-import shows from "./shows.json"
+import shows from "./shows.json";
 import { IEpisode } from "./components/IEpisode";
 import { IShow } from "./components/IShow";
 import isSearchTermPresent from "./utils/isSearchTermPresent";
@@ -13,7 +13,8 @@ function App(): JSX.Element {
   const [search, setSearch] = useState<string>("");
   const [episodeData, setEpisodeData] = useState<IEpisode[]>([]);
   const [idSelect, setIdSelect] = useState<string>("Select an episode...");
-  const [showUrlSelect, setShowUrlSelect] = useState<string>("Select a show...");
+  const [showUrlSelect, setShowUrlSelect] =
+    useState<string>("Select a show...");
 
   useEffect(() => {
     fetch("https://api.tvmaze.com/shows/82/episodes")
@@ -44,18 +45,20 @@ function App(): JSX.Element {
     );
   });
 
-  const showSelectorOptionsArray = shows.sort(alphabeticalShowSorter).map((singleShow: IShow) => {
-    return (
-      <option key={singleShow.id} value={singleShow.url}>
-        {singleShow.name}
-      </option>
-    );
-  });
+  const showSelectorOptionsArray = shows
+    .sort(alphabeticalShowSorter)
+    .map((singleShow: IShow) => {
+      return (
+        <option key={singleShow.id} value={singleShow.url}>
+          {singleShow.name}
+        </option>
+      );
+    });
 
   return (
     <>
       <header>
-      <select
+        <select
           name="Show selector"
           value={showUrlSelect}
           onChange={(event) => {
