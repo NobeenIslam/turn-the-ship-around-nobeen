@@ -13,14 +13,14 @@ function App(): JSX.Element {
   const [search, setSearch] = useState<string>("");
   const [episodeData, setEpisodeData] = useState<IEpisode[]>([]);
   const [idSelect, setIdSelect] = useState<string>("Select an episode...");
-  const [showUrlSelect, setShowUrlSelect] =
-    useState<string>("Select a show...");
+  const [showIdSelect, setShowIdSelect] = useState<string>("Select a show...");
+  console.log(showIdSelect);
 
   useEffect(() => {
-    fetch("https://api.tvmaze.com/shows/82/episodes")
+    fetch(`https://api.tvmaze.com/shows/${showIdSelect}/episodes`)
       .then((response) => response.json())
       .then((jsonEpisode: IEpisode[]) => setEpisodeData(jsonEpisode));
-  }, []);
+  }, [showIdSelect]);
 
   let filteredEpisodes: IEpisode[] = [];
 
@@ -49,7 +49,7 @@ function App(): JSX.Element {
     .sort(alphabeticalShowSorter)
     .map((singleShow: IShow) => {
       return (
-        <option key={singleShow.id} value={singleShow.url}>
+        <option key={singleShow.id} value={singleShow.id}>
           {singleShow.name}
         </option>
       );
@@ -60,9 +60,9 @@ function App(): JSX.Element {
       <header>
         <select
           name="Show selector"
-          value={showUrlSelect}
+          value={showIdSelect}
           onChange={(event) => {
-            setShowUrlSelect(event.target.value);
+            setShowIdSelect(event.target.value);
             setIdSelect("Select an episode...");
             setSearch("");
           }}
