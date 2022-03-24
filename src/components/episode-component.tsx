@@ -2,20 +2,24 @@ import { IEpisode } from "./IEpisode";
 import { seasonEpisodeString } from "../utils/season-episode-string";
 import { tagRemover } from "../utils/tagRemover";
 
-function EpisodeComponent(props: IEpisode): JSX.Element {
-  const episodeCode = seasonEpisodeString(props);
+interface EpisodeComponentProp {
+  episode: IEpisode
+}
+
+function EpisodeComponent(props: EpisodeComponentProp): JSX.Element {
+  const episodeCode = seasonEpisodeString(props.episode);
   // const summaryWithoutTags = tagRemover(props.summary);
   return (
-    <>
-      <h1>{props.name}</h1>
-      <h2>{episodeCode}</h2>
-      {props.image == null && <p>IMAGE MISSING</p>}
-      {props.image !== null && (
-        <img src={props.image.medium} alt="scaled still from episode" />
+    <section className = "episodeBlock">
+      <h2 className = "epCode">{episodeCode}</h2>
+      <h1 className = "epName">{props.episode.name}</h1>
+      {props.episode.image == null && <p>IMAGE MISSING</p>}
+      {props.episode.image !== null && (
+        <img className = "epImg" src={props.episode.image.medium} alt="scaled still from episode" />
       )}
-      {props.summary == null && <p>SUMMARY MISSING</p>}
-      {props.summary !== null && <p>{tagRemover(props.summary)}</p>}
-    </>
+      {props.episode.summary == null && <p className = "epText">SUMMARY MISSING</p>}
+      {props.episode.summary !== null && <p className = "epText">{tagRemover(props.episode.summary)}</p>}
+    </section>
   );
 }
 
