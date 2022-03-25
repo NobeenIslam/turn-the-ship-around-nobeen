@@ -22,19 +22,20 @@ html {
     display: flex;
     flex-direction:row;
     flex-wrap: wrap;
-    width:90%;
-    /* margin-left: auto;
-    margin-right: auto; */
-    /* justify-content: space-around; */
-    align-content: center;
+    align-items: center;
+    text-align: center;
+    margin: auto;
+    justify-content: center;
 }
 
-.epCount{
-    /* margin-right: 20px; */
+.epControls > .epCount{
+    width: 300px;
+    margin-right: 10px;
+
 }
 
-.allEpButton{
-    
+.epControls > .allEpButton{
+    width:150px;
 }
 
 main{
