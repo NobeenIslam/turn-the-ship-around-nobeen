@@ -70,6 +70,7 @@ function App(): JSX.Element {
             setIdSelect("Select an episode...");
             setSearch("");
           }}
+          className="dropDown"
         >
           <option value={496}>Select a show...</option>
           {showSelectorOptionsArray}
@@ -81,6 +82,7 @@ function App(): JSX.Element {
             setIdSelect(event.target.value);
             setSearch("");
           }}
+          className="dropDown"
         >
           <option defaultValue={""}>Select an episode...</option>
           {epSelectorOptionsArray}
@@ -92,18 +94,22 @@ function App(): JSX.Element {
             setSearch(event.target.value);
             setIdSelect("Select an episode...");
           }}
+          className="searchBar"
         ></input>
-        <p>
-          Displaying {episodeBlocks.length} / {episodeData.length} episodes
-        </p>
-        <button
-          onClick={() => {
-            setSearch("");
-            setIdSelect("Select an episode...");
-          }}
-        >
-          Show All Episodes
-        </button>
+        <div className="epControls">
+          <p className="epCount">
+            Displaying {episodeBlocks.length} / {episodeData.length} episodes
+          </p>
+          <button
+            onClick={() => {
+              setSearch("");
+              setIdSelect("Select an episode...");
+            }}
+            className="allEpButton"
+          >
+            Show All Episodes
+          </button>
+        </div>
       </header>
       <br></br>
       <main>{episodeBlocks}</main>
